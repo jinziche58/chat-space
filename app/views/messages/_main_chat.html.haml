@@ -1,21 +1,78 @@
-.messages
-  = render partial: 'message', collection: @messages
-  .upper-message
-    .upper-message__user-name
-      = message.user.name
-    .upper-message__date
-      = message.created_at.strftime("%Y/%m/%d %H:%M")
-  .lower-message
-    - if message.content.present?
-      %p.lower-message__content
-        = message.content
-    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+.chat
+  .header
+    .left-header
+      .left-header__title
+        グループ名
+      %ul.left-header__members
+        Member：
+        %li.member
+          メンバー名
+        %li.member
+          メンバー名
+        %li.member
+          メンバー名
+    .right-header
+      .right-header__button
+        Edit
+  .messages
+    .message
+      .upper-message
+        .upper-message__user-name
+          メンバー
+        .upper-message__date
+          2017/04/04
+      .lower-meesage
+        .lower-message__content
+          メッセージ
+    .message
+      .upper-message
+        .upper-message__user-name
+          メンバー
+        .upper-message__date
+          2017/04/04
+      .lower-meesage
+        .lower-message__content
+          メッセージ
+    .message
+      .upper-message
+        .upper-message__user-name
+          メンバー
+        .upper-message__date
+          2017/04/04
+      .lower-meesage
+        .lower-message__content
+          メッセージ
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
+      .messages
+  = render @messages
 
-.form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = icon('fas', 'image', class: 'icon')
-            = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
+
+
+-# .messages
+-#   = render partial: 'message', collection: @messages
+-#   .upper-message
+-#     .upper-message__user-name
+-#       = message.user.name
+-#     .upper-message__date
+-#       = message.created_at.strftime("%Y/%m/%d %H:%M")
+-#   .lower-message
+-#     - if message.content.present?
+-#       %p.lower-message__content
+-#         = message.content
+-#     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+
+-# .form
+-#       = form_for [@group, @message] do |f|
+-#         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+-#         .form__mask
+-#           = f.label :image, class: 'form__mask__image' do
+-#             = icon('fas', 'image', class: 'icon')
+-#             = f.file_field :image, class: 'hidden'
+-#         = f.submit 'Send', class: 'form__submit'
