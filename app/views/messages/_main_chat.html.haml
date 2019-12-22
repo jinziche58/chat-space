@@ -2,23 +2,18 @@
   .header
     .left-header
       .left-header__title
-        グループ名
+        =@group.name
       %ul.left-header__members
-        Member：
-        %li.member
-          メンバー名
-        %li.member
-          メンバー名
-        %li.member
-          メンバー名
+        Member :
+        - @group.users.each do |user|
+          =user.name
     .right-header
-      .right-header__button
-        Edit
+      = link_to "edit", edit_group_path(@group.id), class: "right-header__button"
+        
   .messages
     .message
       .upper-message
         .upper-message__user-name
-          メンバー
         .upper-message__date
           2017/04/04
       .lower-meesage
@@ -50,8 +45,7 @@
           = icon('fas', 'image', class: 'icon')
           = f.file_field :image, class: 'hidden'
       = f.submit 'Send', class: 'form__submit'
-      .messages
-  = render @messages
+      
 
 
 
