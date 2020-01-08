@@ -52,7 +52,6 @@ $(function(){
         data: {id: last_message_id}
       })
       .done(function(messages) {
-        console.log('success');
         if (messages.length !== 0) {
           var insertHTML = '';
           $.each(messages, function(i, message) {
@@ -68,7 +67,6 @@ $(function(){
       .fail(function() {
         alert("自動更新に失敗しました")
       });
-    //};
   }
   setInterval(reloadMessages, 7000);
 
