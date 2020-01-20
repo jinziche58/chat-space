@@ -11,6 +11,7 @@
       = link_to "edit", edit_group_path(@group.id), class: "right-header__button"
         
   .messages
+   = render @messages 
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'
