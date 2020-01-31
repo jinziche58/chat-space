@@ -26,6 +26,6 @@ def message_params
 end
 
 def set_group
-  @group = Group.find(params[:group_id])
-end
-end
+   @group = Group.find(params[:group_id])
+   end
+ end
